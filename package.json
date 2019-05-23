@@ -3,6 +3,11 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
+  "keywords": [
+    "socket",
+    "message",
+    "tcp"
+  ],
   "scripts": {
     "test": "mocha"
   },
