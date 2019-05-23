@@ -1,0 +1,17 @@
+{
+  "name": "message-socket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "log4js": "^4.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  },
+  "repository": "git@github.com:didyhu/MessageSocket.git",
+  "author": "didyhu <didyhu@gmail.com>"
+}
