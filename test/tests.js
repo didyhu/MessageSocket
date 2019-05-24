@@ -25,13 +25,20 @@ describe("host-tests", () => {
     it("send-and-receive-message", (done) => {
         const socket = net.createConnection({ port: 1234 }, () => {
             const session = new MessageSocket(socket)
-            session.send({ hello: "world" })
-            session.send("hello world")
+            const strings = ["hello world hello world hello world", "hello world", "hello world hello world hello world"]
+            const objects = [{ hello: "world" }, { hello: "hello" }, { hello: "foo" }, { hello: "bar" }]
+            for (const object of objects) {
+                session.send(object)
+            }
+            for (const string of strings) {
+                session.send(string)
+            }
+            session.send("close")
             session.on("message", message => {
-                assert(message == "hello world" || message.hello == "world")
-                if (message == "hello world") {
-                    done()
+                if (message == "close") {
+                    return done()
                 }
+                assert(objects.find(o => o.hello == message.hello) || strings.find(s => s == message))
             })
         })
     })
